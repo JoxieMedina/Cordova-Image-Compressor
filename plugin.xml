@@ -7,20 +7,18 @@
     <description></description>
     <license>MIT</license>
     <keywords></keywords>
-    <repo>https://github.com/driftyco/cordova-plugin-template.git</repo>
-    <issue>https://github.com/driftyco/cordova-plugin-template/issues</issue>
+    <repo>https://github.com/JoxieMedina/Cordova-Image-Compressor</repo>
+    <issue>https://github.com/JoxieMedina/Cordova-Image-Compressor/issues</issue>
 
     <!-- android -->
     <platform name="android">
       <js-module src="www/plugin.js" name="plugin">
         <runs/>
-
-        <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
         <clobbers target="ImageCompressor" />
       </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="ImageCompressor">
-          <param name="android-package" value="com.example.ImageCompressor" />
+          <param name="android-package" value="com.joxiemedina.ImageCompressor" />
           <param name="onload" value="true" />
         </feature>
       </config-file>
@@ -28,12 +26,12 @@
        <config-file parent="/*" target="AndroidManifest.xml">
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
           <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
         </config-file>
 
 
-      <source-file src="src/android/com/example/ImageCompressor.java" target-dir="src/com/example/"
-       />
-      <source-file src="src/android/com/example/ImageUtil.java" target-dir="src/com/example/"
-       />
+      <source-file src="src/android/com/joxiemedina/ImageCompressor.java" target-dir="src/com/joxiemedina/" />
+      <source-file src="src/android/com/joxiemedina/ImageUtil.java" target-dir="src/com/joxiemedina/" />
+      <source-file src="src/android/com/joxiemedina/UriToFileUtil.java" target-dir="src/com/joxiemedina/" />
     </platform>
 </plugin>
