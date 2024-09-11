@@ -1,6 +1,6 @@
 # Cordova Image Compressor Plugin
 
-This Cordova plugin compresses images and supports transforming content URIs to file paths.
+This Cordova plugin compresses images and supports transforming content URIs to file paths for both Android and iOS platforms.
 
 ## Installation
 

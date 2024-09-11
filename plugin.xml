@@ -2,36 +2,49 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-image-compressor"
-    version="1.0.0">
+    version="1.0.1">
     <name>Cordova Image Compressor</name>
-    <description></description>
+    <description>Image compressor for Cordova Android and iOS applications</description>
     <license>MIT</license>
-    <keywords></keywords>
+    <keywords>cordova,image,compressor,android,ios</keywords>
     <repo>https://github.com/JoxieMedina/Cordova-Image-Compressor</repo>
     <issue>https://github.com/JoxieMedina/Cordova-Image-Compressor/issues</issue>
 
-    <!-- android -->
-    <platform name="android">
-      <js-module src="www/plugin.js" name="plugin">
-        <runs/>
-        <clobbers target="ImageCompressor" />
-      </js-module>
-      <config-file target="res/xml/config.xml" parent="/*">
-        <feature name="ImageCompressor">
-          <param name="android-package" value="com.joxiemedina.ImageCompressor" />
-          <param name="onload" value="true" />
-        </feature>
-      </config-file>
+    <!-- Define the JavaScript module for both platforms -->
+    <js-module src="www/plugin.js" name="ImageCompressor">
+        <clobbers target="window.ImageCompressor" />
+    </js-module>
 
-       <config-file parent="/*" target="AndroidManifest.xml">
-          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-          <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- Android platform configuration -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ImageCompressor">
+                <param name="android-package" value="com.joxiemedina.ImageCompressor" />
+                <param name="onload" value="true" />
+            </feature>
         </config-file>
 
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+        </config-file>
 
-      <source-file src="src/android/com/joxiemedina/ImageCompressor.java" target-dir="src/com/joxiemedina/" />
-      <source-file src="src/android/com/joxiemedina/ImageUtil.java" target-dir="src/com/joxiemedina/" />
-      <source-file src="src/android/com/joxiemedina/UriToFileUtil.java" target-dir="src/com/joxiemedina/" />
+        <source-file src="src/android/com/joxiemedina/ImageCompressor.java" target-dir="src/com/joxiemedina/" />
+        <source-file src="src/android/com/joxiemedina/ImageUtil.java" target-dir="src/com/joxiemedina/" />
+        <source-file src="src/android/com/joxiemedina/UriToFileUtil.java" target-dir="src/com/joxiemedina/" />
+    </platform>
+
+    <!-- iOS platform configuration -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ImageCompressor">
+                <param name="ios-package" value="CDVImageCompressor" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVImageCompressor.h" />
+        <source-file src="src/ios/CDVImageCompressor.m" />
     </platform>
 </plugin>
